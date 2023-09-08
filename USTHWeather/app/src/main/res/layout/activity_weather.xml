@@ -4,5 +4,13 @@
     android:layout_height="match_parent"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:id="@+id/container">
+
+    <fragment
+        android:id="@+id/forecastfragment"
+        android:name="vn.edu.usth.usthweather.ForecastFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
 </LinearLayout>
