@@ -6,14 +6,18 @@ import androidx.fragment.app.Fragment;
 
 import android.os.Debug;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
+
+import java.util.Random;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -66,25 +70,66 @@ public class ForecastFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
-//        View view = inflater.inflate(R.layout.fragment_forecast, container, false);
-//        view.setBackgroundColor(0x20FF0000);
-        View view = new View(getContext());
-        view.setBackgroundColor(0x20FF0000);
 
-        ImageView icon=new ImageView(getContext());
-        icon.setImageResource(R.drawable.icon);
+        ScrollView scrollview=new ScrollView(getContext());
+        Random random=new Random();
 
-        TextView text=new TextView(getContext());
-        text.setText("Thursday");
+        LinearLayout output=new LinearLayout(getContext());
+        output.setOrientation(LinearLayout.VERTICAL);
+        output.setBackgroundColor(0xFFDFDFFF);
 
-        LinearLayout display=new LinearLayout(getContext());
-        display.setOrientation(LinearLayout.HORIZONTAL);
-        display.setBackgroundColor(0x20FF0000);
-        display.addView(icon);
-        display.addView(text);
-//        display.addView(view);
-        return display;
+        LinearLayout[] box=new LinearLayout[7];
+
+        String[] arr={"Mon","Tue","Wed","Thu","Fri","Sat","Sun"};
+        int[] weath={R.drawable.sun,R.drawable.showers,R.drawable.rain,R.drawable.scattered_thunderstorms,R.drawable.cloud,R.drawable.thunderstorm};
+        String[] arr_detail={"Partly Cloudy\n24C - 31C","Rain\n22C - 23C","Showers\n24C - 30C","Scattered Thunderstorms\n24C - 27C","Mostly Cloudy\n22C - 30C","Thunderstorms\n25C - 28C"};
+
+        TextView[] day=new TextView[7];
+        LinearLayout.LayoutParams[] day_position=new LinearLayout.LayoutParams[7];
+
+        ImageView[] icon=new ImageView[7];
+        LinearLayout.LayoutParams[] icon_position=new LinearLayout.LayoutParams[7];
+
+        TextView[] detail=new TextView[7];
+        LinearLayout.LayoutParams[] detail_position=new LinearLayout.LayoutParams[7];
+        for(int i=0;i<7;i++){
+            int rand=random.nextInt(4);
+            box[i]=new LinearLayout(getContext());
+            box[i].setOrientation(LinearLayout.HORIZONTAL);
+
+            day[i]=new TextView(getContext());
+            day[i].setText(arr[i]);
+            day[i].setTextSize(20);
+
+            day_position[i]=new LinearLayout.LayoutParams(200, 300);
+            day_position[i].setMargins(30,35,0,0);
+            day[i].setLayoutParams(day_position[i]);
+
+            icon[i]=new ImageView(getContext());
+            icon[i].setImageResource(weath[rand]);
+
+            icon_position[i]=new LinearLayout.LayoutParams(200,200);
+            icon[i].setLayoutParams(icon_position[i]);
+
+            detail[i]=new TextView(getContext());
+            detail[i].setText(arr_detail[rand]);
+
+            detail_position[i]=new LinearLayout.LayoutParams(
+                    300,
+                    LinearLayout.LayoutParams.WRAP_CONTENT
+            );
+            detail_position[i].setMargins(70,18,0,0);
+            detail[i].setLayoutParams(detail_position[i]);
+
+            box[i].addView(day[i]);
+            box[i].addView(icon[i]);
+            box[i].addView(detail[i]);
+            output.addView(box[i]);
+        }
+        scrollview.addView(output);
+        return scrollview;
     }
 
 
