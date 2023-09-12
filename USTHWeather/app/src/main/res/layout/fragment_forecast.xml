@@ -4,16 +4,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ForecastFragment"
-    android:background="#dfdfff">
+    android:id="@+id/forecast"
+    android:orientation="vertical"
+    android:layout_marginTop="10dp">
 
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:name="vn.edu.usth.usthweather.WeatherFragment"
+        tools:layout="@layout/fragment_weather">
+    </fragment>
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/Weather"
+        android:id="@+id/time"
         android:orientation="vertical"
-        android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp">
 
         <LinearLayout
@@ -21,7 +29,6 @@
             android:layout_height="wrap_content"
             android:id="@+id/hang1"
             android:orientation="horizontal"
-            android:paddingTop="20dp"
             android:paddingBottom="20dp">
 
             <TextView
@@ -52,9 +59,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/hang2"
             android:orientation="horizontal"
-            android:paddingTop="20dp"
             android:paddingBottom="20dp">
-
             <TextView
                 android:layout_width="50dp"
                 android:layout_height="match_parent"
@@ -83,7 +88,6 @@
             android:layout_height="wrap_content"
             android:id="@+id/hang3"
             android:orientation="horizontal"
-            android:paddingTop="20dp"
             android:paddingBottom="20dp">
 
             <TextView
@@ -114,7 +118,6 @@
             android:layout_height="wrap_content"
             android:id="@+id/hang4"
             android:orientation="horizontal"
-            android:paddingTop="20dp"
             android:paddingBottom="20dp">
 
             <TextView
@@ -145,7 +148,6 @@
             android:layout_height="wrap_content"
             android:id="@+id/hang5"
             android:orientation="horizontal"
-            android:paddingTop="20dp"
             android:paddingBottom="20dp">
 
             <TextView
@@ -176,7 +178,6 @@
             android:layout_height="wrap_content"
             android:id="@+id/hang6"
             android:orientation="horizontal"
-            android:paddingTop="20dp"
             android:paddingBottom="20dp">
 
             <TextView
@@ -207,7 +208,6 @@
             android:layout_height="wrap_content"
             android:id="@+id/hang7"
             android:orientation="horizontal"
-            android:paddingTop="20dp"
             android:paddingBottom="20dp">
 
             <TextView
@@ -238,7 +238,6 @@
             android:layout_height="wrap_content"
             android:id="@+id/hang8"
             android:orientation="horizontal"
-            android:paddingTop="20dp"
             android:paddingBottom="20dp">
 
             <TextView
@@ -269,7 +268,6 @@
             android:layout_height="wrap_content"
             android:id="@+id/hang9"
             android:orientation="horizontal"
-            android:paddingTop="20dp"
             android:paddingBottom="20dp">
 
             <TextView
